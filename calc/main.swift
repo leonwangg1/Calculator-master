@@ -23,16 +23,6 @@ let no1 = args[0]; // Sample Code Only! Update Required!
 let operations = args[1]; // Sample Code Only! Update Required!
 let no2 = args[2]; // Sample Code Only! Update Required!
 
-//let userInput = readLine(); // Get user input
-//if (userInput?.isEmpty == true) {
-//    print("No user input")
-//    exit(EXIT_FAILURE)
-//    // Exit code
-//}
-//
-//let trimmed = userInput!.trimmingCharacters(in: .whitespacesAndNewlines) // Remove trailing and leading whitespaces
-//let arr = (trimmed.split(separator: " ")) // Seperate into int and operators.
-
 // Check if array has less than 3 elements and return error. Also if doesn't end in number.
 if args.count < 3 || args.count%2 == 0{
     print("Invalid input")
@@ -60,8 +50,6 @@ for element in args{
     }
 }
 
-//let stringArr = arr.map{ String($0)} // Convert substring array to string array
-
 // Initialize a Calculator object
 let calculator = Calculator();
 
@@ -69,5 +57,3 @@ let calculator = Calculator();
 let result = calculator.calculate(args: args);
 
 print(result)
-
-// -1 ++2 -> 1 and put into first tuple in a dictionary
