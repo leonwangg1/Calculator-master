@@ -47,7 +47,7 @@ class Calculator {
     func calculate(args: [String]) -> String {
         
         var dummyResult = 0;
-        var replacedArgs = args
+        var replacedArgs = args // Copy of args array that is mutable
 
         // Look for MultiplicationPrecedence first (*, /, %)
         while (replacedArgs.contains("x") || replacedArgs.contains("%") || replacedArgs.contains("/")){
@@ -96,6 +96,7 @@ class Calculator {
 
         var no1 = Int(replacedArgs[0])
 
+        // Look for AdditionPrecedence first (+, -)
         for number in stride(from: 0, to: replacedArgs.count, by: 2) {
             if (number+2 < replacedArgs.count){
                 if (replacedArgs.contains(replacedArgs[number+1]) && replacedArgs.contains(replacedArgs[number+2])){

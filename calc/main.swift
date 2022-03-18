@@ -23,6 +23,8 @@ func isStringAnInt(string: String) -> Bool {
 //let operations = args[1]; // Sample Code Only! Update Required!
 //let no2 = args[2]; // Sample Code Only! Update Required!
 
+//------------- ERROR HANDLING --------------------------------------------------//
+
 // Parse Integer
 if args.count == 1 && isStringAnInt(string: String(args[0])) == true {
     let result = Int(args[0]);
@@ -36,6 +38,7 @@ if args.count < 3 || args.count%2 == 0{
     exit(EXIT_FAILURE)
 }
 
+// Check input is in correct form
 for element in args{
     if (operators.contains(String(element)) == false && isStringAnInt(string: String(element)) == false){ // Only int and op
         print("Input has to contain int and operators only")
@@ -56,6 +59,8 @@ for element in args{
         }
     }
 }
+
+//------------------------------------------------------------------------------------//
 
 // Initialize a Calculator object
 let calculator = Calculator();
