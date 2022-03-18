@@ -19,9 +19,16 @@ func isStringAnInt(string: String) -> Bool {
 }
 
 // Retrieve User Input
-let no1 = args[0]; // Sample Code Only! Update Required!
-let operations = args[1]; // Sample Code Only! Update Required!
-let no2 = args[2]; // Sample Code Only! Update Required!
+//let no1 = args[0]; // Sample Code Only! Update Required!
+//let operations = args[1]; // Sample Code Only! Update Required!
+//let no2 = args[2]; // Sample Code Only! Update Required!
+
+// Parse Integer
+if args.count == 1 && isStringAnInt(string: String(args[0])) == true {
+    let result = Int(args[0]);
+    print(result!);
+    exit(EXIT_FAILURE)
+}
 
 // Check if array has less than 3 elements and return error. Also if doesn't end in number.
 if args.count < 3 || args.count%2 == 0{

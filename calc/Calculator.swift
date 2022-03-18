@@ -44,25 +44,43 @@ class Calculator {
     }
     
     func calculate(args: [String]) -> String {
-        // Todo: Calculate Result from the arguments. Replace dummyResult with your actual result;
-        let no1 = args[0]; // Sample Code Only! Update Required!
-        let operations = args[1]; // Sample Code Only! Update Required!
-        let no2 = args[2]; // Sample Code Only! Update Required!
+        
+        var no1 = Int(args[0])
         var dummyResult = 0;
         
-        switch operations {
-        case "+":
-            dummyResult = add(no1: Int(no1)!, no2: Int(no2)!);
-        case "-":
-            dummyResult = subtract(no1: Int(no1)!, no2: Int(no2)!);
-        case "/":
-            dummyResult = divide(no1: Int(no1)!, no2: Int(no2)!);
-        case "%":
-            dummyResult = modulo(no1: Int(no1)!, no2: Int(no2)!);
-        case "x":
-            dummyResult = multiply(no1: Int(no1)!, no2: Int(no2)!);
-        default:
-            break
+        for number in stride(from: 0, to: args.count, by: 2) {
+//            print("no1: \(args[number])")
+//            print("operator:\(args[number+1])")
+//            print("no2: \(args[number+2])")
+            if (number+2 < args.count){
+                if (args.contains(args[number+1])){
+                    let no2 = args[number+2]
+                    let operations = args[number+1]
+//                    print("no1: \(no1)")
+//                    print("operator: \(operations)")
+//                    print("no2: \(no2)")
+
+                    switch operations {
+                    case "+":
+                        dummyResult = add(no1: no1!, no2: Int(no2)!);
+                        no1 = dummyResult;
+                    case "-":
+                        dummyResult = subtract(no1: no1!, no2: Int(no2)!);
+                        no1 = dummyResult;
+                    case "/":
+                        dummyResult = divide(no1: no1!, no2: Int(no2)!);
+                        no1 = dummyResult;
+                    case "%":
+                        dummyResult = modulo(no1: no1!, no2: Int(no2)!);
+                        no1 = dummyResult;
+                    case "x":
+                        dummyResult = multiply(no1: no1!, no2: Int(no2)!);
+                        no1 = dummyResult;
+                    default:
+                        break
+                    }
+                }
+            }
         }
         
         let result = String(dummyResult);
