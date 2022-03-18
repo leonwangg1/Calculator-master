@@ -75,12 +75,19 @@ class Calculator {
                             break
                         }
 //                        print("number: \(replacedArgs[number])")
-    //                    print("1: \(replacedArgs[number+1])")
+//                        print("1: \(replacedArgs[number+1])")
                         replacedArgs.remove(at: number+1)
-    //                    print("2: \(replacedArgs[number+1])")
+//                        print("2: \(replacedArgs[number+1])")
                         replacedArgs.remove(at: number+1)
-    //                    print("3: \(replacedArgs[number+1])")
+//                        print("3: \(replacedArgs[number+1])")
                         replacedArgs.remove(at: number+1)
+                        
+                        // Check if next operator is preceding operator
+                        if(number+1 < replacedArgs.count){
+                        if(replacedArgs.contains(replacedArgs[number+1]) && precedence.contains(replacedArgs[number+1])){
+                            break;
+                        }
+                        }
                         
                     }
                 }
