@@ -51,53 +51,48 @@ class Calculator {
 
         // Look for MultiplicationPrecedence first (*, /, %)
         while (replacedArgs.contains("x") || replacedArgs.contains("%") || replacedArgs.contains("/")){
-        for number in stride(from: 0, to: replacedArgs.count, by: 2) {
+            for number in stride(from: 0, to: replacedArgs.count, by: 2) {
 
-            if (number+2 < replacedArgs.count){
-                if (replacedArgs.contains(replacedArgs[number+1]) && replacedArgs.contains(replacedArgs[number+2])){
-                    
-                    let no1 = replacedArgs[number]
-                    let operatorPrecedence = replacedArgs[number+1]
-                    let no2 = replacedArgs[number+2]
+                if (number+2 < replacedArgs.count){
+                    if (replacedArgs.contains(replacedArgs[number+1]) && replacedArgs.contains(replacedArgs[number+2])){
                         
-                    if (precedence.contains(operatorPrecedence)){
-                        switch operatorPrecedence {
-                        case "/":
-                            dummyResult = divide(no1: Int(no1)!, no2: Int(no2)!);
-                            replacedArgs.insert(String(dummyResult), at: number)
-                        case "%":
-                            dummyResult = modulo(no1: Int(no1)!, no2: Int(no2)!);
-                            replacedArgs.insert(String(dummyResult), at: number)
-                        case "x":
-                            dummyResult = multiply(no1: Int(no1)!, no2: Int(no2)!);
-                            replacedArgs.insert(String(dummyResult), at: number)
-                        default:
-                            break
-                        }
-//                        print("number: \(replacedArgs[number])")
-//                        print("1: \(replacedArgs[number+1])")
-                        replacedArgs.remove(at: number+1)
-//                        print("2: \(replacedArgs[number+1])")
-                        replacedArgs.remove(at: number+1)
-//                        print("3: \(replacedArgs[number+1])")
-                        replacedArgs.remove(at: number+1)
+                        let no1 = replacedArgs[number]
+                        let operatorPrecedence = replacedArgs[number+1]
+                        let no2 = replacedArgs[number+2]
+                            
+                        if (precedence.contains(operatorPrecedence)){
+                            switch operatorPrecedence {
+                            case "/":
+                                dummyResult = divide(no1: Int(no1)!, no2: Int(no2)!);
+                                replacedArgs.insert(String(dummyResult), at: number)
+                            case "%":
+                                dummyResult = modulo(no1: Int(no1)!, no2: Int(no2)!);
+                                replacedArgs.insert(String(dummyResult), at: number)
+                            case "x":
+                                dummyResult = multiply(no1: Int(no1)!, no2: Int(no2)!);
+                                replacedArgs.insert(String(dummyResult), at: number)
+                            default:
+                                break
+                            }
                         
-                        // Check if next operator is preceding operator
-                        if(number+1 < replacedArgs.count){
-                        if(replacedArgs.contains(replacedArgs[number+1]) && precedence.contains(replacedArgs[number+1])){
-                            break;
+                            replacedArgs.remove(at: number+1)
+                            replacedArgs.remove(at: number+1)
+                            replacedArgs.remove(at: number+1)
+                            
+                            // Check if next operator is preceding operator
+                            if(number+1 < replacedArgs.count){
+                                if(replacedArgs.contains(replacedArgs[number+1]) && precedence.contains(replacedArgs[number+1])){
+                                    break;
+                                }
+                            }
+                            
                         }
-                        }
-                        
                     }
                 }
             }
         }
-        }
     
-//        for i in replacedArgs{
-//            print("elements in array after precedence: \(i)")
-//        }
+
 
         var no1 = Int(replacedArgs[0])
 
